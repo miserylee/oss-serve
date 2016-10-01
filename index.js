@@ -23,13 +23,14 @@ module.exports = function (options = {}) {
     });
 
     const objects = list.objects.map(object => object.name);
-    
+
     // check locale files
     for (let key of Object.keys(files)) {
       const file = files[key];
       const object = [options.destination, key].join('/');
 
-      objects.splice(objects.indexOf(object), 1);
+      const index = objects.indexOf(object);
+      index >= 0 && objects.splice(index, 1);
       
       let needUpdate = false;
 
