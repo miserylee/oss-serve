@@ -22,7 +22,7 @@ module.exports = function (options = {}) {
       prefix: options.destination
     });
 
-    const objects = list.objects.map(object => object.name);
+    const objects = list && list.objects && Array.isArray(list.objects) && list.objects.map(object => object.name) || [];
 
     // check locale files
     for (let key of Object.keys(files)) {
