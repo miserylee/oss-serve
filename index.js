@@ -27,7 +27,7 @@ module.exports = function (options = {}) {
     // check locale files
     for (let key of Object.keys(files)) {
       const file = files[key];
-      const object = [options.destination, key].join('/');
+      const object = options.destination ? [options.destination, key].join('/') : key;
 
       const index = objects.indexOf(object);
       index >= 0 && objects.splice(index, 1);
@@ -72,7 +72,7 @@ module.exports = function (options = {}) {
       try {
         console.log(LABEL, `File '${object}' need to remove.`);
         yield store.delete(object);
-        console.log(LABEL, `File '${object}' delete success!`);
+        console.log(LABEL, `File '${object}' removed success!`);
       } catch (err) {
         // delete file failed
         console.error(LABEL, `Delete file '${object}' failed with error: ${err.message}`);
