@@ -9,9 +9,9 @@ $ npm install oss-serve
 
 ### Example
 ```js
-const ossServe = require('oss-serve');
+const Serve = require('oss-serve');
 
-ossServe({
+const serve = Serve({
   oss: {
     accessKeyId: /* Your AccessKeyID */,
     accessKeySecret: /* Your AccessKeySecret */,
@@ -19,22 +19,30 @@ ossServe({
     region: /* Your bucket region */
   },
   destination: /* Which subdir the bucket you want to serve to */,
-  root: /* The path of the distribution files */,
   baseUrl: /* The domain you have bind to the bucket */
 });
+
+serve.push(path.resolve(__dirname, 'dist'));
+serve.pull(path.resolve(__dirname, 'backup'));
 ```
 
 ### API
-#### ossServe(options);
-To serve the root to the destination of the bucket.
-
+#### Serve(options);
 ##### options
 * oss {object} ali-oss options. Check more details [here](https://github.com/ali-sdk/ali-oss#ossoptions)!
-* root {string} The path of the distribution files.
 * [destination] {string} The subdir of the bucket where to serve the files, if not set means to
 serve pages at the root of the bucket.
-* [baseUrl] {string} The custom domain bind to the bucket, If not set, default oss domain will be
- used. Check more details [here](https://github.com/ali-sdk/ali-oss#getobjecturlname-baseurl)!
+* [baseUrl] {string} The custom domain bind to the bucket, If not set, default oss domain will be used. Check more details [here](https://github.com/ali-sdk/ali-oss#getobjecturlname-baseurl)!
+
+#### serve.push(root);
+Update the remote files by local files;
+
+* root {string} The root path of local files;
+
+#### serve.pull(root);
+Update the local files by remote files;
+
+* root {string} The root path of local folder;
 
 ### Contributing
 - Fork this Repo first

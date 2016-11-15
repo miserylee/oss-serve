@@ -1,9 +1,8 @@
 
-const ossServe = require('../');
+const Serve = require('../');
 const keys = require('./keys.json');
-const path = require('path');
 
-ossServe({
+module.exports = new Serve({
   oss: {
     accessKeyId: keys.AccessKeyID,
     accessKeySecret: keys.AccessKeySecret,
@@ -11,6 +10,5 @@ ossServe({
     region: 'oss-cn-shenzhen'
   },
   destination: 'demo',
-  root: path.resolve(__dirname, 'dist'),
   baseUrl: 'https://s.8ddao.com'
 });
