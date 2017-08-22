@@ -9,6 +9,7 @@ module.exports = new Serve({
     bucket: '8ddao-web',
     region: 'oss-cn-shenzhen'
   },
+  // match: ['!attach/**', '**/index.js'],
   destination: 'demo',
   baseUrl: 'https://s.8ddao.com'
 });

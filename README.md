@@ -11,7 +11,7 @@ $ npm install oss-serve
 ```js
 const Serve = require('oss-serve');
 
-const serve = Serve({
+const serve = new Serve({
   oss: {
     accessKeyId: /* Your AccessKeyID */,
     accessKeySecret: /* Your AccessKeySecret */,

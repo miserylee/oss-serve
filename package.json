@@ -1,17 +1,27 @@
 {
   "name": "oss-serve",
-  "version": "0.2.2",
+  "version": "0.4.3",
   "description": "Serve static web pages on Aliyun OSS.",
   "main": "index.js",
   "scripts": {
     "push": "DEBUG=oss-serve node ./Example/push",
     "pull": "DEBUG=oss-serve node ./Example/pull"
   },
+  "bin": "./cli.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/miserylee/oss-serve.git"
   },
-  "keywords": ["serve", "aliyun", "oss", "development", "web", "front", "static", "pages"],
+  "keywords": [
+    "serve",
+    "aliyun",
+    "oss",
+    "development",
+    "web",
+    "front",
+    "static",
+    "pages"
+  ],
   "author": "Misery Lee <miserylee@foxmail.com>",
   "license": "MIT",
   "dependencies": {
@@ -19,6 +29,7 @@
     "co": "^4.6.0",
     "debug": "^2.2.0",
     "dir-traveler": "^0.0.2",
-    "hasha": "^2.2.0"
+    "hasha": "^2.2.0",
+    "multimatch": "^2.1.0"
   }
 }
