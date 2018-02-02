@@ -1,0 +1,34 @@
+{
+  "name": "oss-serve",
+  "version": "2.0.0",
+  "main": "./src/index.js",
+  "bin": "./src/cli.js",
+  "license": "MIT",
+  "author": "Misery Lee <miserylee@foxmail.com>",
+  "devDependencies": {
+    "@types/mocha": "^2.2.48",
+    "@types/node": "^9.4.0",
+    "mocha": "^5.0.0",
+    "pre-commit": "^1.2.2",
+    "ts-node": "^4.1.0",
+    "tslint": "^5.9.1",
+    "tslint-clean-code": "^0.2.3",
+    "typescript": "^2.7.1"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node ./lib/index",
+    "lint": "tslint -c tslint.json src/**/*.ts",
+    "test": "mocha --require ts-node/register ./test/*.spec.ts",
+    "prepublishOnly": "npm run build && npm run test"
+  },
+  "pre-commit": [
+    "prepublishOnly"
+  ],
+  "dependencies": {
+    "ali-oss": "latest",
+    "dir-traveler": "latest",
+    "hasha": "latest",
+    "multimatch": "latest"
+  }
+}

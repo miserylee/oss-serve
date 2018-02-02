@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+/test/keys.json
+node_modules
+/lib
+/yarn-error.log
+/*/*.d.ts
+/*/*.js
+/*/*.js.map
+/test/backup/
