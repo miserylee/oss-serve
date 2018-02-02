@@ -3,7 +3,7 @@
 node_modules
 /lib
 /yarn-error.log
-/*/*.d.ts
-/*/*.js
-/*/*.js.map
+#/*/*.d.ts
+#/*/*.js
+#/*/*.js.map
 /test/backup/
