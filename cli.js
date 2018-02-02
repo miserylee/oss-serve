@@ -1,22 +1,33 @@
 #!/usr/bin/env node
 const Serve = require('./');
 const path = require('path');
+const fs = require('fs');
 
-const pkg = require(path.resolve(process.cwd(), 'package.json'));
+const configPath = path.resolve(process.cwd(), 'oss-serve.config.json');
+const isConfigFileExists = fs.existsSync(configPath);
 
-if (!pkg.serve) throw new Error('No configuration found!');
-const { accessKeyId, accessKeySecret, bucket, region, match, destination, baseUrl, pushRoot, pullRoot } = pkg.serve;
+let config;
+if (isConfigFileExists) {
+  config = require(configPath);
+} else {
+  const pkg = require(path.resolve(process.cwd(), 'package.json'));
+  config = pkg.serve;
+}
+
+if (!config) throw new Error('No configuration found!');
+
+const { accessKeyId, accessKeySecret, bucket, region, match, destination, baseUrl, pushRoot, pullRoot } = config;
 
 const serve = new Serve({
   oss: {
     accessKeyId,
     accessKeySecret,
     bucket,
-    region
+    region,
   },
   match,
   destination,
-  baseUrl
+  baseUrl,
 });
 
 const command = process.argv.slice(2)[0];
